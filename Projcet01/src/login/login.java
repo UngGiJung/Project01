@@ -20,7 +20,8 @@ public class login extends WindowAdapter implements ActionListener {
 	private TextField tfId, tfPwd, tfMsg, tspfid, tspw;
 	private TextArea text;
 	private Button bLogin, bSignup, bsiup, bsech;
-	private JComboBox tlo1, tlo2, tlo21, tlo22, tlo3, tlo4;
+	private JComboBox tlo1, tlo2,  tlo3, tlo4;//tlo21, //tlo22,
+	private MemberDAO dao;
 	
     String[] City={"서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원특별자치도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도", "세종특별자치시"};
     String[] Town={" ", " ", " ", " "};
@@ -209,6 +210,30 @@ public class login extends WindowAdapter implements ActionListener {
 			tsup.add(lid2);
 			tsup.add(lid3);
 			tsup.add(bsiup);
+			
+						
+			bsiup.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String Singid = tspfid.getText();
+					String Singpw = tspw.getText();
+					MemberDAO md = new MemberDAO();
+					md.insert(Singid,Singpw);
+					
+//					MemberDAO md = new MemberDAO();
+//					
+//			        String sql = "INSERT INTO MEMBER";
+//		        	   sql += "VALUES ("+ Singid +","+ Singpw +")"; //회원가입ID//회원가입PW
+//		        			
+//		        	   
+//		        stmt = con.createStatement();
+//		        
+//		        stmt.execute(sql);
+//		        System.out.println("데이터 insert 성공!!");
+					
+					
+					
+				}
+			});
 			
 		} else if (e.getSource()==bsech) {
 			tMain3 = new Frame("범죄자 정보 열람 서비스 Crime(검색결과)");
