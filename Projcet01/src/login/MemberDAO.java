@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class MemberDAO {
 
-	String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	String url = "jdbc:oracle:thin:@localhost:1521/jwg1047";
 	String user = "c##firstproj";
 	String password = "firstproj";
 
