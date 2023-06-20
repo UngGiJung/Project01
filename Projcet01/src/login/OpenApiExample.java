@@ -9,8 +9,10 @@ import java.io.IOException;
 
 public class OpenApiExample {
 	public static void main(String[] args) throws IOException {
+		
+		String url2 = "MSPo5WZl8kfIsEjp8ZCtz9147K/QhUCNlxfKs2xwnt5cRx1SS89I4Hj/fs7lWvUl1wIDYUfA6iMcOgwWClOCZQ==";
         StringBuilder urlBuilder = new StringBuilder("http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "iWywGzWKyvUq15COpeWE3LoXNhO3s0q%2BgfCjsnpJwQMeJoycJP4MLRlFOpLPCI42iEVQT8dsWJLDptnhTAnLsA%3D%3D"); /*Service Key*/
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") +"="+ url2 ); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("searchSe","UTF-8") + "=" + URLEncoder.encode("dong", "UTF-8")); /*dong : 동(읍/면)명 road :도로명[default]post : 우편번호*/
         urlBuilder.append("&" + URLEncoder.encode("srchwrd","UTF-8") + "=" + URLEncoder.encode("주월동 408-1", "UTF-8")); /*검색어*/
         urlBuilder.append("&" + URLEncoder.encode("countPerPage","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*페이지당 출력될 개수를 지정*/

@@ -1,10 +1,16 @@
 package login;
 
+import java.awt.Button;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
+import java.awt.Label;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.swing.JFrame;
 
 public class MemberDAO {
 
@@ -13,20 +19,15 @@ public class MemberDAO {
 	String password = "firstproj";
 
 	private Connection con;
-	private Statement stmt = null;
+	private Statement stmt = null, stmt2 = null;
 	private ResultSet rs;
+	private boolean b;
+	private JFrame sout;
 
 	public void insert(String ID, String PW) {
 
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("jdbc driver loading success.");
-
-			con = DriverManager.getConnection(url, user, password);
-			System.out.println("oracle connection success.");
-			stmt = con.createStatement();
-
-//        public void insert(String ID,String PW) {
+			connDB();
 
 			String sql = "INSERT INTO MEMBER";
 			sql += " VALUES (" + "'" + ID + "'" + "," + "'" + PW + "'" + ")"; // 회원가입ID//회원가입PW
@@ -42,55 +43,91 @@ public class MemberDAO {
 
 	}
 
+	public ArrayList<MemberVo> list(String id) {
+		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 
-public ArrayList<MemberVo> list(String id) {
-    ArrayList<MemberVo> list =new ArrayList<MemberVo>();
-    
-    try {
-       connDB();
-       
-       String query ="SELECT * FROM member ";
-       if(id !=null) {
-          query += "where id =TRIM('"+id+"')";
-          
-       }
-       System.out.println("SQL : " +query);
-       
-       rs=stmt.executeQuery(query);
-       rs.last();
-       System.out.println("rs.getRow() : "+rs.getRow());
-       
-       if(rs.getRow() ==0) {
-          System.out.println("0 row selected.....");
-       }else {
-          System.out.println(rs.getRow()+"rows selected.......");
-          rs.previous();
-          while(rs.next()) {
-             String sh =rs.getString("id");
-             String password =rs.getString("password");
-                            
-             MemberVo data = new MemberVo(sh,password);
-             list.add(data);
-          }
-       }
-    }catch(Exception e) {
-       e.printStackTrace();
-    }
-     
-      return list;
-  }
+		try {
+			connDB();
 
-  public void connDB() {
-      try {
-          Class.forName("oracle.jdbc.driver.OracleDriver");
-          System.out.println("jdbc driver loading success.");
-          con = DriverManager.getConnection(url, user, password);
-          System.out.println("oracle connection success.");
-          
-          stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-          System.out.println("statement create success.");
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-  }
+			String query = "SELECT * FROM member ";
+			if (id != null) {
+				query += "where ID =TRIM('" + id + "')";
+
+			}
+			System.out.println("SQL : " + query);
+
+			rs = stmt.executeQuery(query);
+			rs.last();
+			System.out.println("rs.getRow() : " + rs.getRow());
+
+			if (rs.getRow() == 0) {
+				System.out.println("0 row selected.....");
+			} else {
+				System.out.println(rs.getRow() + "rows selected.......");
+				rs.previous();
+				while (rs.next()) {
+					String sh = rs.getString("id");
+					String password = rs.getString("password");
+
+					MemberVo data = new MemberVo(sh, password);
+					list.add(data);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	public void delete(String ID, String PW) {
+		try {
+			connDB();
+			
+			
+			String query = "DELETE FROM MEMBER";
+			       query += " where ID =TRIM('" + ID + "')";
+
+			System.out.println("SQL : " + query);
+			
+			b = stmt.execute(query);
+			
+            if (!b) {
+                System.out.println("회원탈퇴 되었습니다..!");
+                
+                Dialog info = new Dialog(sout, "Delete Complete", true);
+                info.setSize(200, 100);
+                info.setLocation(550, 550);
+                info.setLayout(new FlowLayout());
+                
+                Label msg = new Label("Delete Complete", Label.CENTER);
+                Button ok = new Button("Ok");
+                
+                info.add(msg);
+                info.add(ok);
+                
+                info.setVisible(true);
+  
+            } else {
+                System.out.println("회원 ID가 옳바르지 않습니다.");
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+            
+		}
+	}
+
+	public void connDB() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("jdbc driver loading success.");
+			con = DriverManager.getConnection(url, user, password);
+			System.out.println("oracle connection success.");
+
+			stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			System.out.println("statement create success.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
