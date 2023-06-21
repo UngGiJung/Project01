@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class login extends WindowAdapter implements ActionListener {
 	private Button bLogin, bSignup, bsiup, bsiup2, bsech;
 	private JComboBox tlo1, tlo2, tlo3, tlo4;// tlo21, //tlo22,
 	private MemberDAO dao, dao2;
+	private BufferedImage player;
 
 	// 전국 도시
 	String[] City = { "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원특별자치도", "충청북도", "충청남도",
@@ -72,7 +74,7 @@ public class login extends WindowAdapter implements ActionListener {
 			"유천동", "이곡1동", "이곡2동", "장기동", "죽전동", "진천동"};
 
 	String[] ETC = { "kim", "jhon", "hyosoo", "namyun" };
-
+	
 	public login() {
 		dao = new MemberDAO();
 		dao2 = new MemberDAO();
@@ -112,9 +114,12 @@ public class login extends WindowAdapter implements ActionListener {
 
 		try {
 			t.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\70.png")))));
+			player = ImageIO.read(new File("C:\\Logo.png"));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 
 		t.add(tfMsg);
 		t.add(bLogin);
@@ -127,12 +132,14 @@ public class login extends WindowAdapter implements ActionListener {
 		t.setVisible(true);
 
 		// 이미지 넣기
+		
 
 	}
-
+		
 	public static void main(String[] args) {
 		new login();
 	}
+	
 
 	public void windowClosing(WindowEvent e) {
 		System.out.println(e.getComponent().getName());
