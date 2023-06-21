@@ -165,18 +165,6 @@ public class login extends WindowAdapter implements ActionListener {
 					tlo2 = new JComboBox(Town);
 					tlo2.setBounds(250, 400, 300, 30);
 
-//					if (City.equals("서울특별시")) {
-//						
-//						tlo21 = new JComboBox(Town1);
-//						tlo21.setBounds(250, 400, 300, 30);
-//						
-//						} else if (City.equals("부산광역시")) {
-//							
-//							tlo22 = new JComboBox(Town2);
-//							tlo22.setBounds(250, 400, 300, 30);
-//							
-//						}
-
 					Label tlow3 = new Label("Village : ");
 					tlow3.setBounds(130, 470, 100, 100);
 
@@ -275,17 +263,34 @@ public class login extends WindowAdapter implements ActionListener {
 
 			bsiup2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
 
-					System.out.println("회원탈퇴");
 					System.out.println(tspfid.getText() + " : " + tspw.getText());
+					String strId4 = tspfid.getText();
+					String strId5 = tspw.getText();
 
-					String strId2 = tspfid.getText();
-					String strId3 = tspw.getText();
-					MemberDAO md = new MemberDAO();
-					md.delete(strId2, strId3);
+					ArrayList<MemberVo> list = dao.list(strId4, strId5);
 
+					System.out.println("list.size() :" + list.size());
+					if (list.size() == 1) {
+						MemberVo data = (MemberVo) list.get(0);
+						String id = data.getId();
+						String pwd = data.getPassword();
+
+						System.out.println("DB ==> " + id + " " + pwd);
+
+						if (tspw.getText().equals(pwd)) {
+							System.out.println("회원탈퇴");
+							System.out.println(tspfid.getText() + " : " + tspw.getText());
+
+							String strId2 = tspfid.getText();
+							String strId3 = tspw.getText();
+							MemberDAO md = new MemberDAO();
+							md.delete(strId2, strId3);
+
+						}
+					}
 				}
+
 			});
 
 		} else if (e.getSource() == bsech) {
