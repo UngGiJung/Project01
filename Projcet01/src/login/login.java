@@ -26,7 +26,7 @@ public class login extends WindowAdapter implements ActionListener {
 //public class login extends JFrame implements ActionListener {	
 
 	private JFrame t, tMain, tsup, tMain2, tMain3;
-	private TextField tfId, tfPwd, tfMsg, tspfid, tspw;
+	private TextField tfId, tfPwd, tfMsg, tspfid, tspw, resultn;
 	private TextArea text;
 	private Button bLogin, bSignup, bsiup, bsiup2, bsech;
 	private JComboBox tlo1, tlo2, tlo3, tlo4;// tlo21, //tlo22,
@@ -114,7 +114,7 @@ public class login extends WindowAdapter implements ActionListener {
 
 		try {
 			t.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\70.png")))));
-			player = ImageIO.read(new File("C:\\Logo.png"));
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -334,7 +334,7 @@ public class login extends WindowAdapter implements ActionListener {
 //					tMain2.add(tlow4);
 
 					tMain2.add(bsech);
-					tMain2.add(text);
+					tMain2.add(text);			
 
 				} else {
 					System.out.println("로그인에 실패했습니다, 다시 입력하세요.");
@@ -428,11 +428,33 @@ public class login extends WindowAdapter implements ActionListener {
 			});
 
 		} else if (e.getSource() == bsech) {
+			String local = tlo1.getSelectedItem().toString();
+			String local2 = tlo2.getSelectedItem().toString();
+			String local3 = tlo3.getSelectedItem().toString();
+			String localname = local +" "+ local2 +" "+ local3;
+			System.out.println(localname);
+			
 			tMain3 = new JFrame("범죄자 정보 열람 서비스 Crime(검색결과)");
 			tMain3.setLayout(null);
 			tMain3.setBounds(80, 80, 1000, 1000);
 			tMain3.addWindowListener(this);
 			tMain3.setVisible(true);
+			
+			Label resultN = new Label("Serch Result : ");
+			resultN.setBounds(15, 44, 100, 30);
+
+			resultn = new TextField(localname);
+			resultn.setBounds(115, 40, 300, 30);
+			resultn.setEditable(false);
+			
+			try {
+				tMain3.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\50.png")))));
+			} catch (IOException r) {
+				r.printStackTrace();
+			}
+			
+			tMain3.add(resultN);
+			tMain3.add(resultn);
 		}
 	}
 }
