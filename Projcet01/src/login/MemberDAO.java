@@ -21,7 +21,7 @@ public class MemberDAO {
 	String password = "firstproj";
 
 	private Connection con;
-	private Statement stmt = null, stmt2 = null;
+	private Statement stmt = null;
 	private ResultSet rs;
 	private boolean b;
 	private JFrame sout;
