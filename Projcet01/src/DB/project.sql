@@ -1,4 +1,4 @@
-SELECT * FROM MEMBER;
+SELECT *FROM member
 
 CREATE TABLE MEMBER (
 ID varchar2(20) PRIMARY KEY,
@@ -6,16 +6,25 @@ password varchar2(20) NOT NULL
 )
 
 INSERT INTO MEMBER (id, password)
-VALUES('신우철','1234')
+VALUES('himedia','himedia1234')
 
-INSERT INTO MEMBER (id, password)
-VALUES('강준형','4321')
+purge recyclebin
 
 SELECT *
 FROM MEMBER
-WHERE id = trim('  신우철   ')
-
-INSERT INTO MEMBER VALUES (asdasd,123123)
+WHERE id = trim('  himedia   ')
 
 DELETE FROM MEMBER
-WHERE ID = 'qweqweqwe'
+WHERE ID = '강준형멍청이'
+
+SELECT *FROM DB
+
+SELECT murder, robbery, theft, violence
+FROM DB
+WHERE city = '서울특별시'and village like '중구'
+
+SELECT *FROM DB2
+
+SELECT name, address1, address2
+from DB2
+WHERE (address1 like '%서울특별시%' and address1 LIKE '%강남구%' or address2 LIKE '%서울특별시%' and address2 LIKE '%강남구%')
