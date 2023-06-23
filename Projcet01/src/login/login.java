@@ -150,7 +150,7 @@ public class login extends WindowAdapter implements ActionListener {
 			tMain2.dispose();
 		} else if (e.getComponent() == tMain3) {
 			tMain3.dispose();
-		} 
+		}
 	}
 
 	@Override
@@ -302,12 +302,6 @@ public class login extends WindowAdapter implements ActionListener {
 					tlo3 = new JComboBox(Village4);
 					tlo3.setBounds(210, 570, 300, 30);
 
-//					Label tlow4 = new Label("ETC : ");
-//					tlow4.setBounds(130, 570, 100, 100);
-//
-//					tlo4 = new JComboBox(ETC);
-//					tlo4.setBounds(250, 600, 300, 30);
-
 					bsech = new Button("Search");
 					bsech.setBounds(300, 670, 80, 30);
 					bsech.addActionListener(this);
@@ -326,9 +320,6 @@ public class login extends WindowAdapter implements ActionListener {
 
 					tMain2.add(tlo3);
 					tMain2.add(tlow3);
-
-//					tMain2.add(tlo4);
-//					tMain2.add(tlow4);
 
 					tMain2.add(bsech);
 					tMain2.add(text);
@@ -466,6 +457,7 @@ public class login extends WindowAdapter implements ActionListener {
 		} else if (e.getSource() == bsech) {
 			
 			db = new DB();
+
 			
 			String local = tlo1.getSelectedItem().toString();
 			String local2 = tlo2.getSelectedItem().toString();
@@ -495,12 +487,18 @@ public class login extends WindowAdapter implements ActionListener {
 					tMain3.dispose();
 				}
 				});
+			
+//			setBisible(false); 창을 화면에 나타낼 것인지
+			
+//			for (int i = 0; i <= 10; i++) {
+//				
+//			}
 
 			try {
 				tMain3.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\50.png")))));
 			} catch (IOException r) {
 				r.printStackTrace();
-			}
+			}			
 
 			tMain3.add(resultN);
 			tMain3.add(resultn);
@@ -525,8 +523,26 @@ public class login extends WindowAdapter implements ActionListener {
 				
 				tMain3.add(resultn2);
 				
+			} 
+			
+			ArrayList<MemberVo> list2 = db.list(local,local2,local3);
+			
+			System.out.println("list.size() :" + list2.size());
+				
+		  if (list2.size() != 0) { 
+			  for (int i = 0; i < list2.size(); i++) {
+				 MemberVo data2 = (MemberVo) list2.get(i);
+				 
+					String name = data2.getWord();
+					String address1 = data2.getWord2();
+					String address2 = data2.getWord3();	
+					
+					
+					System.out.println("DB ==> " + name + " " + address1 + " " + address2);
+								
+			  }
 			} else {
-				System.out.println("지역값이 잘못 되었습니다.");
+				System.out.println("범죄자 검색이 잘못되었습니다.");
 			}
 		}
 	}

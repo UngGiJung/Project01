@@ -18,6 +18,13 @@ public class MemberVo {
         
     }
     
+    public MemberVo(String text, String text2, String text3) {
+        this.text = text;
+        this.text2 = text2;
+        this.text3 = text3;
+        
+    }
+    
     public MemberVo(String text, String text2, String text3, String text4) {
         this.text = text;
         this.text2 = text2;

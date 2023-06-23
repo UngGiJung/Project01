@@ -16,7 +16,7 @@ public class DB {
 	private Statement stmt;
 	private ResultSet rs;
 	
-	public ArrayList<MemberVo> list(String local, String local2 ) {
+	public ArrayList<MemberVo> list(String local, String local2) {
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 		
 
@@ -56,6 +56,48 @@ public class DB {
 		}
 
 		return list;
+		
+	}
+		
+		public ArrayList<MemberVo> list(String local, String local2, String lcoal3) {
+			ArrayList<MemberVo> list2 = new ArrayList<MemberVo>();
+			
+
+			try {
+				connDB();
+
+				String query = "SELECT name, address1, address2 from DB2 ";
+				if (local != null) {
+					query += "where address1 like'%" + local  + "%' and address1 like '%"+local2+"%'";
+					query += " or address2 like'%" + local  + "%' and address2 like '%"+local2+"%'";
+
+				}
+				System.out.println("SQL : " + query);
+
+				rs = stmt.executeQuery(query);
+				rs.first();
+				System.out.println("rs.getRow() : " + rs.getRow());
+
+				if (rs.getRow() == 0) {
+					System.out.println("0 row selected.....");
+					
+				} else {
+					System.out.println(rs.getRow() + "rows selected.......");
+					rs.previous();
+					while (rs.next()) {
+						String name = rs.getString("NAME");
+						String address1 = rs.getString("ADDRESS1");
+						String address2 = rs.getString("ADDRESS2");
+
+						MemberVo data = new MemberVo(name, address1, address2);
+						list2.add(data);
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return list2;
 	}
 	
 	public void connDB() {

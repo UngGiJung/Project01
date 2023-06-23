@@ -25,7 +25,9 @@ public class MemberDAO {
 	private ResultSet rs;
 	private boolean b;
 	private JFrame sout;
-
+	
+	
+	//회원가입
 	public void insert(String ID, String PW) {
 
 		try {
@@ -63,7 +65,8 @@ public class MemberDAO {
 		}
 
 	}
-
+	
+	//로그인
 	public ArrayList<MemberVo> list(String id) {
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 
@@ -101,6 +104,8 @@ public class MemberDAO {
 		return list;
 	}
 
+	
+	//	
 	public ArrayList<MemberVo> list(String ID, String PW) {
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 
