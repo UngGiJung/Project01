@@ -15,6 +15,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,8 +33,8 @@ public class login extends WindowAdapter implements ActionListener {
 	private JFrame t, tMain, tsup, tMain2, tMain3;
 	private TextField tfId, tfPwd, tfMsg, tspfid, tspw, resultn, resultn3, resultn4, resultn5;
 	private TextArea text, resultn2;
-	private Button bLogin, bSignup, bsiup, bsiup2, bsech, bresult, bresult2;
-	private JComboBox tlo1, tlo2, tlo3, tlo4;// tlo21, //tlo22,
+	private Button bLogin, bSignup, bsiup, bsiup2, bsech, bresult;
+	private JComboBox tlo1, tlo2, tlo3;// tlo4, tlo21, //tlo22,
 	private ScrollPane scroll1;
 	private MemberDAO dao;
 	private DB db;
@@ -55,25 +56,25 @@ public class login extends WindowAdapter implements ActionListener {
 	String[] Town3 = { "남구(대구)", "달서구", "달성군", "동구", "북구", "서구", "수성구", "중구(대구)" };
 
 	// 부산 강서구
-	String[] Village2 = { " ", "대저동", "강동동", "명지동", "가락동", "녹산동", "가덕도동" };
+	String[] Village2 = { "전체검색", "대저동", "강동동", "명지동", "가락동", "녹산동", "가덕도동" };
 
 	// 부산 금정구
-	String[] Village3 = { " ", "서제동", "금사회동동", "부곡동", "장전동", "선두구동",
+	String[] Village3 = { "전체검색", "서제동", "금사회동동", "부곡동", "장전동", "선두구동",
 			"청룡노포동", "남산동", "구서동", "금성동" };
 
 	// 서울 강남구
-	String[] Village4 = { " ", "개포동", "논현동", "대치동", "도곡동",
+	String[] Village4 = { "전체검색", "개포동", "논현동", "대치동", "도곡동",
 			"삼성동", "세곡동", "수서동", "신사동", "압구정동", "역삼동", "일원동", "일원본동", "청담동" };
 
 	// 서울 강동구
-	String[] Village5 = { " ", "강일동", "고덕동", "길동", "둔촌동", "명일동", "상일동", "성내동",
+	String[] Village5 = { "전체검색", "강일동", "고덕동", "길동", "둔촌동", "명일동", "상일동", "성내동",
 			"암사동", "천호동" };
 
 	// 대구 남구
-	String[] Village6 = { " ", "대명동", "봉덕동", "이천동" };
+	String[] Village6 = { "전체검색", "대명동", "봉덕동", "이천동" };
 
 	// 대구 달서구
-	String[] Village7 = { " ", "감삼동", "도원동", "두류동", "본동", "본리동", "상인동", "성당동", "송현동", "신당동",
+	String[] Village7 = { "전체검색", "감삼동", "도원동", "두류동", "본동", "본리동", "상인동", "성당동", "송현동", "신당동",
 			"용산동", "월성동", "유천동", "이곡동", "장기동", "죽전동", "진천동" };
 
 	public login() {
@@ -514,7 +515,7 @@ public class login extends WindowAdapter implements ActionListener {
 				resultn2 = new TextArea();
 				resultn2.setBounds(535, 5, 430, 70);
 				resultn2.setEditable(false);
-				resultn2.setText("[ '구' 단위 지역 내  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "   [ 강도 :     "
+				resultn2.setText("[ '구' 단위 지역 내  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
 						+ robbery + " ]" + "    [ 절도 :     " + theft + " ]" + "    [ 폭력 :     " + violence + " ]");
 
 				tMain3.add(resultn2);
@@ -538,15 +539,20 @@ public class login extends WindowAdapter implements ActionListener {
 				
 				scroll1.add(panel);
 				tMain3.add(scroll1);
+				
+				String [] a = new String [list2.size()];
+				Button [] b = new Button [list2.size()];
 
 				for (int i = 0; i < list2.size(); i++) {
 					MemberVo data2 = (MemberVo) list2.get(i);
-
+					
 					String name = data2.getWord();
 					String address1 = data2.getWord2();
 					String address2 = data2.getWord3();
 
 					System.out.println("DB ==> " + name + " " + address1 + " " + address2);
+					
+					a[i] = name;
 
 					resultn3 = new TextField(address1 + "   -----[주민등록상 주소지]");
 					resultn3.setBounds(200, 10 + (i * 100), 650, 30);
@@ -555,20 +561,56 @@ public class login extends WindowAdapter implements ActionListener {
 					resultn5 = new TextField(address2 + "   -----[실제거주중 주소지]");
 					resultn5.setBounds(200, 45 + (i * 100), 650, 30);
 					resultn5.setEditable(false);
+					
+					b[i] = new Button("Detail Info");
+					b[i].setBounds(875, 10 + (i * 100), 65, 65);
 
 					resultn4 = new TextField(name);
 					resultn4.setBounds(20, 10 + (i * 100), 150, 30);
 					resultn4.setEditable(false);
-					
-					bresult2 = new Button("Detail Info");
-					bresult2.setBounds(875, 10 + (i * 100), 65, 65);
-					bresult2.addActionListener(this);
 
 					panel.add(resultn3);
 					panel.add(resultn4);
 					panel.add(resultn5);
-					panel.add(bresult2);
+					panel.add(b[i]);
+					
+					Button c = b[i];
+					String d = a[i]; 
+					
 
+					
+					b[i].addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+
+							System.out.println(c);
+							
+							ArrayList<MemberVo> list3 = db.list(d);
+
+							System.out.println("list.size() :" + list3.size());
+							if (list3.size() == 1) {
+								MemberVo data = (MemberVo) list3.get(0);
+								String strname2 = data.getWord();
+								System.out.println("DB ==> " + strname2);
+
+								if (d.equals(strname2)) {
+									System.out.println("범죄상세 조회 완료");
+									System.out.println(d);
+									
+									tMain = new JFrame("범죄자 정보 열람 서비스 Crime(상세조회)");
+									tMain.setLayout(null);
+									tMain.setBounds(300, 100, 1000, 1000);
+									tMain.setVisible(true);
+
+									try {
+										tMain.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\img\\"+d+".png")))));
+									} catch (IOException r) {
+										r.printStackTrace();
+									}							
+								}
+							}
+						}
+
+					});
 				}
 			} else {
 				Dialog info2 = new Dialog(tMain3, "Error Message!", true);

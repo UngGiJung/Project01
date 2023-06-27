@@ -11,6 +11,10 @@ public class MemberVo {
     public MemberVo() {
  
     }
+    
+    public MemberVo(String text) {
+        this.text = text;        
+    }
  
     public MemberVo(String text, String text2) {
         this.text = text;
