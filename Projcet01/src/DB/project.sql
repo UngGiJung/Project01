@@ -27,4 +27,4 @@ SELECT *FROM DB2
 
 SELECT name, address1, address2
 from DB2
-WHERE (address1 like '%서울특별시%' and address1 LIKE '%강남구%' or address2 LIKE '%서울특별시%' and address2 LIKE '%강남구%')
+WHERE (address1 like '%서울특별시%' and address1 LIKE '%강남구%' and address1 LIKE '%도곡동%' or address2 LIKE '%서울특별시%' and address2 LIKE '%강남구%'and address2 LIKE '%도곡동%')

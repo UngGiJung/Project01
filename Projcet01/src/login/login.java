@@ -4,6 +4,7 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.ScrollPane;
@@ -15,7 +16,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -189,10 +189,13 @@ public class login extends WindowAdapter implements ActionListener {
 
 					text = new TextArea();
 					text.setBounds(190, 100, 300, 150);
-					text.setText("지역 세부 정보를 입력하시면\n\n" + "1.해당 지역의 성범죄자의 신상정보\n\n" + "2.해당 지역의 강력범죄 발생 빈도\n\n" + ""
+					text.setText("지역 세부 정보를 입력하시면\n\n" + "1.해당 지역의 성범죄자의 신상정보\n" + "2.해당 지역의 강력범죄 발생 빈도\n\n" + ""
 							+ "를 조회하실 수 있습니다.");
 					text.setEditable(false);
 					text.setFocusable(false);
+					
+					Font font =new Font("맑은 고딕",1,10);
+					text.setFont(font); //폰트 설정
 
 					Label tlow1 = new Label("City     : ");
 					tlow1.setBounds(160, 300, 50, 30);
@@ -474,7 +477,7 @@ public class login extends WindowAdapter implements ActionListener {
 
 			Label resultN = new Label("Search Result : ");
 			resultN.setBounds(15, 27, 100, 30);
-
+			
 			resultn = new TextField(localname);
 			resultn.setBounds(115, 23, 300, 30);
 			resultn.setEditable(false);
@@ -577,7 +580,7 @@ public class login extends WindowAdapter implements ActionListener {
 					Button c = b[i];
 					String d = a[i]; 
 					
-
+					
 					
 					b[i].addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
