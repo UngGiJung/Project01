@@ -56,7 +56,7 @@ public class login extends WindowAdapter implements ActionListener {
 	String[] Town3 = { "남구(대구)", "달서구", "달성군", "동구", "북구", "서구", "수성구", "중구(대구)" };
 
 	// 부산 강서구
-	String[] Village2 = { "전체검색", "대저동", "강동동", "명지동", "가락동", "녹산동", "가덕도동" };
+	String[] Village2 = { "전체검색", "대저동", "강동동", "명지동", "가락동", "녹산동", "가덕도동", "신호동", "동선동", "명지동" };
 
 	// 부산 금정구
 	String[] Village3 = { "전체검색", "서제동", "금사회동동", "부곡동", "장전동", "선두구동",
@@ -518,7 +518,7 @@ public class login extends WindowAdapter implements ActionListener {
 				resultn2 = new TextArea();
 				resultn2.setBounds(535, 5, 430, 70);
 				resultn2.setEditable(false);
-				resultn2.setText("[ '구' 단위 지역 내  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
+				resultn2.setText("[ "+local2+"  전체  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
 						+ robbery + " ]" + "    [ 절도 :     " + theft + " ]" + "    [ 폭력 :     " + violence + " ]");
 
 				tMain3.add(resultn2);
