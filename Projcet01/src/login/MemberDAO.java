@@ -29,6 +29,25 @@ public class MemberDAO {
 	
 	//회원가입
 	public void insert(String ID, String PW) {
+		//PW 영문소문자 4 이상, 숫자 2 이상 걸러내는 필터
+		int num = 0 , str = 0;
+		for (int i = 0; i < PW.length(); i++) {
+			
+			char pwd = PW.charAt(i);
+			
+			if (48 <= pwd && pwd <= 57) {
+				num++;
+				
+			} else if ( 97 <= pwd && pwd <= 122 ) {
+				str++;
+				
+			} else {
+				error2();
+			}
+		}
+
+						
+		if (6 <= ID.length() && ID.length() <= 12 && 2 <= num && 4 <= str) {
 
 		try {
 			connDB();
@@ -63,7 +82,12 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		} else if (6 > ID.length() || ID.length() > 12) {
+			error();
+		} else if ( 2 > num || 4 > str ) {
+			error2();
+		}
+		
 	}
 	
 	//로그인
@@ -220,5 +244,51 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void error() {
+		
+		Dialog info3 = new Dialog(sout, "회원가입 조건 설명", true);
+		info3.setSize(400, 100);
+		info3.setLocation(500, 500);
+		info3.setLayout(new FlowLayout());
+		
+		//ID : 6~12자 이내    //    PW : 영문소문자4자 이상, 숫자2자 이상 조합"
+		
+		Label msg3 = new Label("ID : 6~12자 이내", Label.CENTER);
+		Button ok3 = new Button("Ok");
+		
+		ok3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				info3.dispose();
+			}
+		});
+		
+		info3.add(msg3);
+		info3.add(ok3);
+		
+		info3.setVisible(true);
+	}
+	
+	public void error2() {
+		
+		Dialog info3 = new Dialog(sout, "회원가입 조건 설명", true);
+		info3.setSize(400, 100);
+		info3.setLocation(500, 500);
+		info3.setLayout(new FlowLayout());
+		
+		Label msg3 = new Label("PW : 영문소문자4자 이상, 숫자2자 이상 조합", Label.CENTER);
+		Button ok3 = new Button("Ok");
+		
+		ok3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				info3.dispose();
+			}
+		});
+		
+		info3.add(msg3);
+		info3.add(ok3);
+		
+		info3.setVisible(true);
 	}
 }

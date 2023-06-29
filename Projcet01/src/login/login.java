@@ -32,7 +32,7 @@ public class login extends WindowAdapter implements ActionListener {
 
 	private JFrame t, tMain, tsup, tMain2, tMain3;
 	private TextField tfId, tfPwd, tfMsg, tspfid, tspw, resultn, resultn3, resultn4, resultn5;
-	private TextArea text, resultn2;
+	private TextArea text, resultn2, text2;
 	private Button bLogin, bSignup, bsiup, bsiup2, bsech, bresult;
 	private JComboBox tlo1, tlo2, tlo3;// tlo4, tlo21, //tlo22,
 	private ScrollPane scroll1;
@@ -186,7 +186,7 @@ public class login extends WindowAdapter implements ActionListener {
 					tMain2.setBounds(80, 80, 700, 800);
 					tMain2.addWindowListener(this);
 					tMain2.setVisible(true);
-
+					
 					text = new TextArea();
 					text.setBounds(190, 100, 300, 150);
 					text.setText("지역 세부 정보를 입력하시면\n\n" + "1.해당 지역의 성범죄자의 신상정보\n" + "2.해당 지역의 강력범죄 발생 빈도\n\n" + ""
@@ -194,7 +194,7 @@ public class login extends WindowAdapter implements ActionListener {
 					text.setEditable(false);
 					text.setFocusable(false);
 					
-					Font font =new Font("맑은 고딕",1,10);
+					Font font =new Font("맑은 고딕",1,15);
 					text.setFont(font); //폰트 설정
 
 					Label tlow1 = new Label("City     : ");
@@ -402,6 +402,15 @@ public class login extends WindowAdapter implements ActionListener {
 			bsiup2 = new Button("Good Bye With Us!");
 			bsiup2.setBounds(339, 470, 160, 30);
 			bsiup2.addActionListener(this);
+			
+			text2 = new TextArea();
+			text2.setBounds(260, 100, 300, 110);
+			text2.setText("아이디 생성 조건 설명\n\n" + "1.ID   : 6~12자 이내\n" + "2.PW : 영문소문자4자 이상, \n          숫자2자 이상 조합\n\n" );
+			text2.setEditable(false);
+			text2.setFocusable(false);
+			
+			Font font =new Font("맑은 고딕",1,15);
+			text2.setFont(font); //폰트 설정
 
 			try {
 				tsup.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\50.png")))));
@@ -415,6 +424,7 @@ public class login extends WindowAdapter implements ActionListener {
 			tsup.add(lid3);
 			tsup.add(bsiup);
 			tsup.add(bsiup2);
+			tsup.add(text2);
 
 			bsiup.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -478,9 +488,20 @@ public class login extends WindowAdapter implements ActionListener {
 			Label resultN = new Label("Search Result : ");
 			resultN.setBounds(15, 27, 100, 30);
 			
+			Label resultN2 = new Label("지역별 성범죄자 List");
+			resultN2.setBounds(15, 88, 150, 30);
+			
+			Label resultN3 = new Label("도움말 : 'Detail Info' 를 클릭하시면 상세 정보를 열람하실 수 있습니다.");
+			resultN3.setBounds(300, 835, 400, 30);
+						
+			Label resultN4 = new Label("도움말 : 'Detail Info' 를 클릭하시면 상세 정보를 열람하실 수 있습니다.");
+			resultN4.setBounds(300, 88, 400, 30);
+			
 			resultn = new TextField(localname);
 			resultn.setBounds(115, 23, 300, 30);
 			resultn.setEditable(false);
+			Font font2 =new Font("맑은 고딕",1,15);
+			resultn.setFont(font2); //폰트 설정
 
 			bresult = new Button("Re:Search");
 			bresult.setBounds(420, 21, 80, 30);
@@ -498,7 +519,9 @@ public class login extends WindowAdapter implements ActionListener {
 				r.printStackTrace();
 			}
 			
-			
+			tMain3.add(resultN3);
+			tMain3.add(resultN4);
+			tMain3.add(resultN2);
 			tMain3.add(resultN);
 			tMain3.add(resultn);
 			tMain3.add(bresult);
@@ -516,10 +539,12 @@ public class login extends WindowAdapter implements ActionListener {
 				System.out.println("DB ==> " + murder + " " + robbery + " " + theft + " " + violence);
 
 				resultn2 = new TextArea();
-				resultn2.setBounds(535, 5, 430, 70);
+				resultn2.setBounds(505, 5, 470, 70);
 				resultn2.setEditable(false);
-				resultn2.setText("[ "+local2+"  전체  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
+				resultn2.setText("\n[ "+local2+"  전체  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
 						+ robbery + " ]" + "    [ 절도 :     " + theft + " ]" + "    [ 폭력 :     " + violence + " ]");
+				Font font =new Font("맑은 고딕",1,11);
+				resultn2.setFont(font); //폰트 설정
 
 				tMain3.add(resultn2);
 
@@ -560,10 +585,14 @@ public class login extends WindowAdapter implements ActionListener {
 					resultn3 = new TextField(address1 + "   -----[주민등록상 주소지]");
 					resultn3.setBounds(200, 10 + (i * 100), 650, 30);
 					resultn3.setEditable(false);
+					Font font =new Font("맑은 고딕",1,15);
+					resultn3.setFont(font); //폰트 설정
 
 					resultn5 = new TextField(address2 + "   -----[실제거주중 주소지]");
 					resultn5.setBounds(200, 45 + (i * 100), 650, 30);
 					resultn5.setEditable(false);
+					Font font3 =new Font("맑은 고딕",1,15);
+					resultn5.setFont(font3); //폰트 설정
 					
 					b[i] = new Button("Detail Info");
 					b[i].setBounds(875, 10 + (i * 100), 65, 65);
@@ -571,6 +600,8 @@ public class login extends WindowAdapter implements ActionListener {
 					resultn4 = new TextField(name);
 					resultn4.setBounds(20, 10 + (i * 100), 150, 30);
 					resultn4.setEditable(false);
+					Font font4 =new Font("맑은 고딕",1,15);
+					resultn4.setFont(font4); //폰트 설정
 
 					panel.add(resultn3);
 					panel.add(resultn4);
@@ -599,7 +630,7 @@ public class login extends WindowAdapter implements ActionListener {
 									System.out.println("범죄상세 조회 완료");
 									System.out.println(d);
 									
-									tMain = new JFrame("범죄자 정보 열람 서비스 Crime(상세조회)");
+									tMain = new JFrame("범죄자 정보 열람 서비스 Crime(성범죄자 상세조회)");
 									tMain.setLayout(null);
 									tMain.setBounds(300, 100, 1000, 1000);
 									tMain.setVisible(true);
@@ -612,7 +643,6 @@ public class login extends WindowAdapter implements ActionListener {
 								}
 							}
 						}
-
 					});
 				}
 			} else {
