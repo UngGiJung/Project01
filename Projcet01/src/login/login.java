@@ -470,6 +470,25 @@ public class login extends WindowAdapter implements ActionListener {
 							MemberDAO md = new MemberDAO();
 							md.delete(strId2, strId3);
 
+						} else {
+							Dialog info2 = new Dialog(tsup, "Error Message!", true);
+							info2.setSize(200, 100);
+							info2.setLocation(600, 600);
+							info2.setLayout(new FlowLayout());
+
+							Label msg2 = new Label("Password is not sure.", Label.CENTER);
+							Button ok2 = new Button("Ok");
+
+							ok2.addActionListener(new ActionListener() {
+								public void actionPerformed(ActionEvent e) {
+									info2.dispose();
+								}
+								});
+
+								info2.add(msg2);
+								info2.add(ok2);
+
+								info2.setVisible(true);
 						}
 					}
 				}

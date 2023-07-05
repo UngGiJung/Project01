@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -31,11 +32,15 @@ public class MemberDAO {
 	public void insert(String ID, String PW) {
 		//PW 영문소문자 4 이상, 숫자 2 이상 걸러내는 필터
 		int num = 0 , str = 0;
+	    char pwd = 0;		
 		for (int i = 0; i < PW.length(); i++) {
 			
-			char pwd = PW.charAt(i);
+			pwd = PW.charAt(i);
 			
-			if (48 <= pwd && pwd <= 57) {
+			if ((48 > pwd || 57 < pwd) && (97 > pwd || pwd > 122)) {
+				error2();
+				break;
+			} else if (48 <= pwd && pwd <= 57) {
 				num++;
 				
 			} else if ( 97 <= pwd && pwd <= 122 ) {
@@ -43,10 +48,10 @@ public class MemberDAO {
 				
 			} else {
 				error2();
+				break;
 			}
 		}
-
-						
+			
 		if (6 <= ID.length() && ID.length() <= 12 && 2 <= num && 4 <= str) {
 
 		try {
@@ -79,15 +84,34 @@ public class MemberDAO {
 
 				info3.setVisible(true);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (SQLException e) {
+			if (e.getMessage().contains("ORA-00001")){ // SQL 오류 메세지를 받아와 이 조건일때 IF문 저의부를 실행시켜주게 만든것
+				System.out.println(e);
+				Dialog info2 = new Dialog(sout, "Error Message!", true);
+				info2.setSize(200, 100);
+				info2.setLocation(600, 600);
+				info2.setLayout(new FlowLayout());
+
+				Label msg2 = new Label("Already have the same ID..", Label.CENTER);
+				Button ok2 = new Button("Ok");
+
+				ok2.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						info2.dispose();
+					}
+					});
+
+					info2.add(msg2);
+					info2.add(ok2);
+
+					info2.setVisible(true);
+			}
+		} 
 		} else if (6 > ID.length() || ID.length() > 12) {
 			error();
-		} else if ( 2 > num || 4 > str ) {
+		} else if ( 2 > num || 4 > str) {
 			error2();
-		}
-		
+		} 
 	}
 	
 	//로그인
@@ -174,26 +198,6 @@ public class MemberDAO {
 				while (rs.next()) {
 					String sh = rs.getString("id");
 					String password = rs.getString("password");
-					
-					Dialog info2 = new Dialog(sout, "Error Message!", true);
-					info2.setSize(200, 100);
-					info2.setLocation(600, 600);
-					info2.setLayout(new FlowLayout());
-
-					Label msg2 = new Label("Password is not sure.", Label.CENTER);
-					Button ok2 = new Button("Ok");
-
-					ok2.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							info2.dispose();
-						}
-						});
-
-						info2.add(msg2);
-						info2.add(ok2);
-
-						info2.setVisible(true);
-
 					MemberVo data = new MemberVo(sh, password);
 					list.add(data);
 				}
@@ -243,6 +247,7 @@ public class MemberDAO {
 
 			} else {
 				System.out.println("회원 ID가 옳바르지 않습니다.");
+	
 			}
 
 		} catch (Exception e) {
