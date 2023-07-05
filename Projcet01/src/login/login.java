@@ -39,6 +39,8 @@ public class login extends WindowAdapter implements ActionListener {
 	private MemberDAO dao;
 	private DB db;
 	private Panel panel;
+	private ImageIcon Logo1;
+	
 
 	// 전국 도시
 	String[] City = { "서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "경기도", "강원특별자치도", "충청북도", "충청남도",
@@ -59,23 +61,21 @@ public class login extends WindowAdapter implements ActionListener {
 	String[] Village2 = { "전체검색", "대저동", "강동동", "명지동", "가락동", "녹산동", "가덕도동", "신호동", "동선동", "명지동" };
 
 	// 부산 금정구
-	String[] Village3 = { "전체검색", "서제동", "금사회동동", "부곡동", "장전동", "선두구동",
-			"청룡노포동", "남산동", "구서동", "금성동" };
+	String[] Village3 = { "전체검색", "서제동", "금사회동동", "부곡동", "장전동", "선두구동", "청룡노포동", "남산동", "구서동", "금성동" };
 
 	// 서울 강남구
-	String[] Village4 = { "전체검색", "개포동", "논현동", "대치동", "도곡동",
-			"삼성동", "세곡동", "수서동", "신사동", "압구정동", "역삼동", "일원동", "일원본동", "청담동" };
+	String[] Village4 = { "전체검색", "개포동", "논현동", "대치동", "도곡동", "삼성동", "세곡동", "수서동", "신사동", "압구정동", "역삼동", "일원동", "일원본동",
+			"청담동" };
 
 	// 서울 강동구
-	String[] Village5 = { "전체검색", "강일동", "고덕동", "길동", "둔촌동", "명일동", "상일동", "성내동",
-			"암사동", "천호동" };
+	String[] Village5 = { "전체검색", "강일동", "고덕동", "길동", "둔촌동", "명일동", "상일동", "성내동", "암사동", "천호동" };
 
 	// 대구 남구
 	String[] Village6 = { "전체검색", "대명동", "봉덕동", "이천동" };
 
 	// 대구 달서구
-	String[] Village7 = { "전체검색", "감삼동", "도원동", "두류동", "본동", "본리동", "상인동", "성당동", "송현동", "신당동",
-			"용산동", "월성동", "유천동", "이곡동", "장기동", "죽전동", "진천동" };
+	String[] Village7 = { "전체검색", "감삼동", "도원동", "두류동", "본동", "본리동", "상인동", "성당동", "송현동", "신당동", "용산동", "월성동", "유천동",
+			"이곡동", "장기동", "죽전동", "진천동" };
 
 	public login() {
 		dao = new MemberDAO();
@@ -112,13 +112,20 @@ public class login extends WindowAdapter implements ActionListener {
 		tfMsg.setBounds(160, 450, 300, 30);
 		tfMsg.setEditable(false);
 		tfMsg.setFocusable(false);
+		
+		
+		Logo1 = new ImageIcon();
+		JLabel Logo = new JLabel(Logo1);
+		Logo.setBounds(165,-30,256,256);
+		
+		Logo.setIcon(new ImageIcon("C:\\Logo.png"));
+		
 
 		try {
 			t.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\70.png")))));
-
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}		
 
 		t.add(tfMsg);
 		t.add(bLogin);
@@ -127,6 +134,7 @@ public class login extends WindowAdapter implements ActionListener {
 		t.add(tfPwd);
 		t.add(lid);
 		t.add(tfId);
+		t.add(Logo);
 
 		t.setVisible(true);
 
@@ -186,16 +194,16 @@ public class login extends WindowAdapter implements ActionListener {
 					tMain2.setBounds(80, 80, 700, 800);
 					tMain2.addWindowListener(this);
 					tMain2.setVisible(true);
-					
+
 					text = new TextArea();
 					text.setBounds(190, 100, 300, 150);
 					text.setText("지역 세부 정보를 입력하시면\n\n" + "1.해당 지역의 성범죄자의 신상정보\n" + "2.해당 지역의 강력범죄 발생 빈도\n\n" + ""
 							+ "를 조회하실 수 있습니다.");
 					text.setEditable(false);
 					text.setFocusable(false);
-					
-					Font font =new Font("맑은 고딕",1,15);
-					text.setFont(font); //폰트 설정
+
+					Font font = new Font("맑은 고딕", 1, 15);
+					text.setFont(font); // 폰트 설정
 
 					Label tlow1 = new Label("City     : ");
 					tlow1.setBounds(160, 300, 50, 30);
@@ -402,15 +410,15 @@ public class login extends WindowAdapter implements ActionListener {
 			bsiup2 = new Button("Good Bye With Us!");
 			bsiup2.setBounds(339, 470, 160, 30);
 			bsiup2.addActionListener(this);
-			
+
 			text2 = new TextArea();
 			text2.setBounds(260, 100, 300, 110);
-			text2.setText("아이디 생성 조건 설명\n\n" + "1.ID   : 6~12자 이내\n" + "2.PW : 영문소문자4자 이상, \n          숫자2자 이상 조합\n\n" );
+			text2.setText("아이디 생성 조건 설명\n\n" + "1.ID   : 6~12자 이내\n" + "2.PW : 영문소문자4자 이상, \n          숫자2자 이상 조합\n\n");
 			text2.setEditable(false);
 			text2.setFocusable(false);
-			
-			Font font =new Font("맑은 고딕",1,15);
-			text2.setFont(font); //폰트 설정
+
+			Font font = new Font("맑은 고딕", 1, 15);
+			text2.setFont(font); // 폰트 설정
 
 			try {
 				tsup.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\50.png")))));
@@ -484,24 +492,23 @@ public class login extends WindowAdapter implements ActionListener {
 			tMain3.addWindowListener(this);
 			tMain3.setVisible(true);
 
-
 			Label resultN = new Label("Search Result : ");
 			resultN.setBounds(15, 27, 100, 30);
-			
+
 			Label resultN2 = new Label("지역별 성범죄자 List");
 			resultN2.setBounds(15, 88, 150, 30);
-			
+
 			Label resultN3 = new Label("도움말 : 'Detail Info' 를 클릭하시면 상세 정보를 열람하실 수 있습니다.");
 			resultN3.setBounds(300, 835, 400, 30);
-						
+
 			Label resultN4 = new Label("도움말 : 'Detail Info' 를 클릭하시면 상세 정보를 열람하실 수 있습니다.");
 			resultN4.setBounds(300, 88, 400, 30);
-			
+
 			resultn = new TextField(localname);
 			resultn.setBounds(115, 23, 300, 30);
 			resultn.setEditable(false);
-			Font font2 =new Font("맑은 고딕",1,15);
-			resultn.setFont(font2); //폰트 설정
+			Font font2 = new Font("맑은 고딕", 1, 15);
+			resultn.setFont(font2); // 폰트 설정
 
 			bresult = new Button("Re:Search");
 			bresult.setBounds(420, 21, 80, 30);
@@ -518,7 +525,7 @@ public class login extends WindowAdapter implements ActionListener {
 			} catch (IOException r) {
 				r.printStackTrace();
 			}
-			
+
 			tMain3.add(resultN3);
 			tMain3.add(resultN4);
 			tMain3.add(resultN2);
@@ -541,10 +548,10 @@ public class login extends WindowAdapter implements ActionListener {
 				resultn2 = new TextArea();
 				resultn2.setBounds(505, 5, 470, 70);
 				resultn2.setEditable(false);
-				resultn2.setText("\n[ "+local2+"  전체  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
+				resultn2.setText("\n[ " + local2 + "  전체  강력범죄 건수]\n\n" + "[ 살인 :     " + murder + " ]" + "[ 강도 :     "
 						+ robbery + " ]" + "    [ 절도 :     " + theft + " ]" + "    [ 폭력 :     " + violence + " ]");
-				Font font =new Font("맑은 고딕",1,11);
-				resultn2.setFont(font); //폰트 설정
+				Font font = new Font("맑은 고딕", 1, 11);
+				resultn2.setFont(font); // 폰트 설정
 
 				tMain3.add(resultn2);
 
@@ -555,69 +562,66 @@ public class login extends WindowAdapter implements ActionListener {
 			System.out.println("list.size() :" + list2.size());
 
 			if (list2.size() != 0) {
-				
+
 				panel = new Panel();
 				panel.setLayout(null);
-				panel.setBounds(0, 125, 960, (list2.size()*100)+50);
+				panel.setBounds(0, 125, 960, (list2.size() * 100) + 50);
 				panel.setBackground(Color.gray);
 
 				scroll1 = new ScrollPane();
 				scroll1.setBounds(0, 125, 985, 700);
-				
-				
+
 				scroll1.add(panel);
 				tMain3.add(scroll1);
-				
-				String [] a = new String [list2.size()];
-				Button [] b = new Button [list2.size()];
+
+				String[] a = new String[list2.size()];
+				Button[] b = new Button[list2.size()];
 
 				for (int i = 0; i < list2.size(); i++) {
 					MemberVo data2 = (MemberVo) list2.get(i);
-					
+
 					String name = data2.getWord();
 					String address1 = data2.getWord2();
 					String address2 = data2.getWord3();
 
 					System.out.println("DB ==> " + name + " " + address1 + " " + address2);
-					
+
 					a[i] = name;
 
 					resultn3 = new TextField(address1 + "   -----[주민등록상 주소지]");
 					resultn3.setBounds(200, 10 + (i * 100), 650, 30);
 					resultn3.setEditable(false);
-					Font font =new Font("맑은 고딕",1,15);
-					resultn3.setFont(font); //폰트 설정
+					Font font = new Font("맑은 고딕", 1, 15);
+					resultn3.setFont(font); // 폰트 설정
 
 					resultn5 = new TextField(address2 + "   -----[실제거주중 주소지]");
 					resultn5.setBounds(200, 45 + (i * 100), 650, 30);
 					resultn5.setEditable(false);
-					Font font3 =new Font("맑은 고딕",1,15);
-					resultn5.setFont(font3); //폰트 설정
-					
+					Font font3 = new Font("맑은 고딕", 1, 15);
+					resultn5.setFont(font3); // 폰트 설정
+
 					b[i] = new Button("Detail Info");
 					b[i].setBounds(875, 10 + (i * 100), 65, 65);
 
 					resultn4 = new TextField(name);
 					resultn4.setBounds(20, 10 + (i * 100), 150, 30);
 					resultn4.setEditable(false);
-					Font font4 =new Font("맑은 고딕",1,15);
-					resultn4.setFont(font4); //폰트 설정
+					Font font4 = new Font("맑은 고딕", 1, 15);
+					resultn4.setFont(font4); // 폰트 설정
 
 					panel.add(resultn3);
 					panel.add(resultn4);
 					panel.add(resultn5);
 					panel.add(b[i]);
-					
+
 					Button c = b[i];
-					String d = a[i]; 
-					
-					
-					
+					String d = a[i];
+
 					b[i].addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 
 							System.out.println(c);
-							
+
 							ArrayList<MemberVo> list3 = db.list(d);
 
 							System.out.println("list.size() :" + list3.size());
@@ -629,17 +633,18 @@ public class login extends WindowAdapter implements ActionListener {
 								if (d.equals(strname2)) {
 									System.out.println("범죄상세 조회 완료");
 									System.out.println(d);
-									
+
 									tMain = new JFrame("범죄자 정보 열람 서비스 Crime(성범죄자 상세조회)");
 									tMain.setLayout(null);
 									tMain.setBounds(300, 100, 1000, 1000);
 									tMain.setVisible(true);
 
 									try {
-										tMain.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\img\\"+d+".png")))));
+										tMain.setContentPane(new JLabel(
+												new ImageIcon(ImageIO.read(new File("C:\\img\\" + d + ".png")))));
 									} catch (IOException r) {
 										r.printStackTrace();
-									}							
+									}
 								}
 							}
 						}
@@ -658,12 +663,12 @@ public class login extends WindowAdapter implements ActionListener {
 					public void actionPerformed(ActionEvent e) {
 						info2.dispose();
 					}
-					});
+				});
 
-					info2.add(msg2);
-					info2.add(ok2);
+				info2.add(msg2);
+				info2.add(ok2);
 
-					info2.setVisible(true);
+				info2.setVisible(true);
 				System.out.println("범죄자 검색이 잘못되었습니다.");
 			}
 		}

@@ -1,0 +1,151 @@
+<mxfile host="app.diagrams.net" modified="2023-07-05T01:01:41.013Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="lFocCLqGapVUk8rOYbLv" version="21.5.2" type="device">
+  <diagram name="페이지-1" id="nar-KqlG7AT8t_ZASXwC">
+    <mxGraphModel dx="1434" dy="916" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-1" value="사용자" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+          <mxGeometry x="30" y="10" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-4" value="로그인" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="140" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-5" value="지역찾기" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-6" value="검색결과" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-7" value="상세정보" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-9" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="720" as="sourcePoint" />
+            <mxPoint x="200.17" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-10" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="720" as="sourcePoint" />
+            <mxPoint x="380.40999999999997" y="81" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-11" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="561" y="720" as="sourcePoint" />
+            <mxPoint x="561.41" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-12" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="720" as="sourcePoint" />
+            <mxPoint x="739.29" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-13" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="46" y="157" as="sourcePoint" />
+            <mxPoint x="200" y="157" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-14" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="45" y="720" as="sourcePoint" />
+            <mxPoint x="45.46999999999998" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-16" value="&lt;b&gt;login() 클래스&lt;br&gt;1 : 사용자 ID와 PW를 입력한다.&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="45" y="114" width="182" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-17" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="221" as="sourcePoint" />
+            <mxPoint x="380" y="221" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-18" value="&lt;b&gt;dao.list(strId);&lt;br&gt;2 : ID와 PW를 DB데이터에서 검수.&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200" y="180" width="250" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-20" value="&lt;b&gt;3 : 거짓&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="200" y="230" width="180" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-21" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="683" as="sourcePoint" />
+            <mxPoint x="828" y="683" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-22" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="380" y="271" as="sourcePoint" />
+            <mxPoint x="200" y="271" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-24" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="200" y="319.75" as="sourcePoint" />
+            <mxPoint x="40" y="319.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-25" value="&lt;b&gt;Dialog&lt;br&gt;4 : ID or PW 오류 팝업 / 재입력&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="45" y="276" width="175" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-28" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="380" y="380" as="sourcePoint" />
+            <mxPoint x="200" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-29" value="&lt;b&gt;5 : 참&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="202" y="341" width="175" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-31" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="50" y="440" as="sourcePoint" />
+            <mxPoint x="380" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-32" value="&lt;b&gt;equals(pwd);&lt;br&gt;6 : 로그인 완료 후 지역찾기 프로그램 실행&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="45" y="401" width="335" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-33" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="507" as="sourcePoint" />
+            <mxPoint x="560" y="507" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-35" value="&lt;b&gt;ItemEvent.SELECTED&lt;br&gt;7 : 검색하려는 지역의 주소지 지정&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="380" y="469" width="250" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-36" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="560" y="594" as="sourcePoint" />
+            <mxPoint x="740" y="594" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-37" value="&lt;b&gt;db.list(String a,b,c)&lt;br&gt;8 : 대상 지역의 결과 출력(강력범죄 건수/성범죄자list)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="503" y="557" width="293" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-39" value="&lt;b&gt;ActionListener&lt;br&gt;9 : 상세정보 조회 (버튼 클릭)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="666" y="642" width="161" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-43" value="" style="curved=1;endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="561" y="533" as="sourcePoint" />
+            <mxPoint x="561" y="442" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="626" y="552" />
+              <mxPoint x="681" y="505" />
+              <mxPoint x="643" y="447" />
+              <mxPoint x="603" y="437" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bn3xOSbEwSGdqI_6shRr-44" value="&lt;b&gt;dispose();&lt;br&gt;7-1 : 재검색 (버튼클릭)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="561" y="397" width="177" height="41" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

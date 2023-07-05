@@ -129,7 +129,7 @@ public class MemberDAO {
 	}
 
 	
-	//	
+	//DB에 ID 존재하지 않을때, PW가 다를 때(회원탈퇴)
 	public ArrayList<MemberVo> list(String ID, String PW) {
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 
@@ -174,6 +174,25 @@ public class MemberDAO {
 				while (rs.next()) {
 					String sh = rs.getString("id");
 					String password = rs.getString("password");
+					
+					Dialog info2 = new Dialog(sout, "Error Message!", true);
+					info2.setSize(200, 100);
+					info2.setLocation(600, 600);
+					info2.setLayout(new FlowLayout());
+
+					Label msg2 = new Label("Password is not sure.", Label.CENTER);
+					Button ok2 = new Button("Ok");
+
+					ok2.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							info2.dispose();
+						}
+						});
+
+						info2.add(msg2);
+						info2.add(ok2);
+
+						info2.setVisible(true);
 
 					MemberVo data = new MemberVo(sh, password);
 					list.add(data);
@@ -185,7 +204,8 @@ public class MemberDAO {
 
 		return list;
 	}
-
+	
+	//회원탈퇴
 	public void delete(String ID, String PW) {
 
 		try {
@@ -196,9 +216,9 @@ public class MemberDAO {
 
 			System.out.println("SQL : " + query);
 
-			b = stmt.execute(query);
+			b = stmt.execute(query); // excute의 결과값은 쿼리문이 정상작동 되었을때 결과값으로 false가 나온다
 
-			if (!b) {
+			if (!b) { // 쿼리문이 정상적으로 작동 되었으므로 false가 나오고 이것의 부정, 즉 그 값이 true 일때 if문 실행
 				System.out.println("회원탈퇴 되었습니다..!");
 
 				Dialog info = new Dialog(sout, "Complete Message!", true);
@@ -222,7 +242,6 @@ public class MemberDAO {
 				info.setVisible(true);
 
 			} else {
-				
 				System.out.println("회원 ID가 옳바르지 않습니다.");
 			}
 

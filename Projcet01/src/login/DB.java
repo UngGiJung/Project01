@@ -16,6 +16,7 @@ public class DB {
 	private Statement stmt;
 	private ResultSet rs;
 	
+	//지역별 강력범죄 건수 출력
 	public ArrayList<MemberVo> list(String local, String local2) {
 		ArrayList<MemberVo> list = new ArrayList<MemberVo>();
 		
@@ -58,7 +59,7 @@ public class DB {
 		return list;
 		
 	}
-		
+		//성범죄자 DB의 주소지 출력
 		public ArrayList<MemberVo> list(String local, String local2, String local3) {
 			ArrayList<MemberVo> list2 = new ArrayList<MemberVo>();
 			
@@ -103,7 +104,7 @@ public class DB {
 			return list2;
 	}
 		
-		
+		//성범죄자 DB에 맞게 이름 출력
 		public ArrayList<MemberVo> list(String name) {
 			ArrayList<MemberVo> list3 = new ArrayList<MemberVo>();
 			
