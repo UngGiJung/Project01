@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+
 public class OpenApiExample {
 	public static void main(String[] args) throws IOException {
 		
@@ -14,7 +15,7 @@ public class OpenApiExample {
         StringBuilder urlBuilder = new StringBuilder("http://openapi.epost.go.kr/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") +"="+ url2 ); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("searchSe","UTF-8") + "=" + URLEncoder.encode("dong", "UTF-8")); /*dong : 동(읍/면)명 road :도로명[default]post : 우편번호*/
-        urlBuilder.append("&" + URLEncoder.encode("srchwrd","UTF-8") + "=" + URLEncoder.encode("주월동 408-1", "UTF-8")); /*검색어*/
+        urlBuilder.append("&" + URLEncoder.encode("srchwrd","UTF-8") + "=" + URLEncoder.encode("개봉동 2", "UTF-8")); /*검색어*/
         urlBuilder.append("&" + URLEncoder.encode("countPerPage","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*페이지당 출력될 개수를 지정*/
         urlBuilder.append("&" + URLEncoder.encode("currentPage","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*출력될 페이지 번호*/
         URL url = new URL(urlBuilder.toString());
